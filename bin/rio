@@ -1,0 +1,26 @@
+#!/bin/sh
+#/ Usage: rio [<app>] [<resolution>]
+
+: ${RIO_FILE:="$HOME/.rio"}
+
+# show program usage
+if [ "$1" = "-h" -o "$1" = "--help" ]; then
+    grep '^#/' < "$0" | cut -c4- >&2
+    exit 2
+fi
+
+# no args, print current resolution
+if [ $# -eq 0 ]; then
+    if [ `uname` = "Darwin" ]; then
+        /usr/sbin/system_profiler SPDisplaysDataType | grep Resolution | awk '{print $2$3$4}'
+    else
+        xdpyinfo | grep dimensions | awk '{print $2}'
+    fi
+else
+    out=$(grep -v "^#" "$RIO_FILE" | grep -i "^$1" | tr -s '[:space:]')
+    if [ -z "$2" ]; then
+        echo "$out" | cut -d ' ' -f2-
+    else
+        echo "$out" | awk "\$2 ~ /^$2/" | cut -d ' ' -f3-
+    fi
+fi
