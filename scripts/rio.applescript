@@ -1,14 +1,11 @@
--- set this to wherever rio is installed
-set rio to "/usr/local/bin/rio"
-
--- WIDTHxHEIGHT format
-set screenResolution to do shell script rio & " | tr -d '\n'"
-
--- app name
+--
+-- rio
+--
+set res to do shell script "rio"
 set app_name to displayed name of (info for path to frontmost application)
 set short_name to short name of (info for (path to frontmost application))
-set canonical_name to do shell script "echo '" & short_name & "' | sed 's/ /-/'"
-set bounds_ to do shell script rio & " " & canonical_name & " " & screenResolution
+set canonical_name to do shell script "echo '" & short_name & "' | sed 's/[[:space:]]/-/g'"
+set bounds_ to do shell script "rio " & canonical_name & " " & res
 
 if not (bounds_ = "") then
     set width to (word 1 of bounds_) as integer
