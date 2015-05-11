@@ -1,7 +1,7 @@
 --
--- rio
+-- astro
 --
-set path_ to "" & (path to home folder) & ".rio"
+set path_ to "" & (path to home folder) & ".astro"
 
 on lower(this_text)
     set the comparison_string to "ABCDEFGHIJKLMNOPQRSTUVWXYZ"

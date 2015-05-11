@@ -1,4 +1,4 @@
-rio
----
+astro
+-----
 
-An Applescript that resizes windows.
+**A**pple**s**cripts **T**hat **R**esize wind**o**ws.
