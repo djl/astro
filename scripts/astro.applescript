@@ -1,7 +1,7 @@
 --
 -- astro
 --
-set path_ to "" & (path to home folder) & ".astro"
+set path_ to "" & (path to home folder) & ".config:astro:config"
 
 on lower(this_text)
     set the comparison_string to "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
